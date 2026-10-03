@@ -1,5 +1,14 @@
 <?php
     include('dataretrive.php');
+    if(!isset($_SESSION['patientdetails']['patient_id'])){
+        header('location:../login/login.php');  
+    }
+    if(isset($_GET['admit'])){
+        $otp = random_int(1000, 9999);
+        $stmt=$conn->prepare('INSERT INTO admit (p_id,date,otp) VALUES (?,NOW(),?)');
+        $stmt->bind_param('ii',$_SESSION['patientdetails']['patient_id'], $otp);
+        $stmt->execute();
+    }
 ?>
 
 <html lang="en">
@@ -35,9 +44,11 @@
                     <p>Welcome back,<?= $_SESSION['patientdetails']['fname']?>
                     </p>
                     <div class="admit">
-                        <a href="./process.php" class="admit-link" name="admit">
-                            <img src="../imgs/admit.png" alt="admit">
-                        </a>
+                        <div class="admit">
+                            <a href="?admit=1" class="admit-link" id="admitLink">
+                                <img src="../imgs/admit.png" alt="admit">
+                            </a>
+                        </div>  
                     </div>
                 </div>
                 <div class="statusarea">
@@ -187,6 +198,15 @@
             </div>
         </div>
     </div>
-    <script src="scripts.js"></script>
+    <script>
+        const otp=<?= json_encode($otp ?? '0000') ?>;
+        window.addEventListener('load', (event) => {
+            console.log('The page, including images and stylesheets, is fully loaded.');
+            if(otp !== '0000'){
+                alert('Your OTP for admission is: ' + otp);
+            }
+        });
+
+    </script>
 </body>
 </html>
