@@ -12,7 +12,7 @@
     $res=$stmt->get_result();
     $row=$res->fetch_assoc();
 
-    $provider_stmt=$conn->prepare('SELECT name FROM insurancecompanies WHERE id=?');
+    $provider_stmt=$conn->prepare('SELECT * FROM insurancecompanies WHERE id=?');
     $provider_stmt->bind_param('i',$row['ip_id']);
     $provider_stmt->execute();
 
@@ -55,18 +55,28 @@
             </div>
             <div class="content">
                 <div class="detailcard">
-                    <h2>Insurance Details</h2>
+                    <div class="title">
+                        <h2>Insurance Details</h2>
+                    </div>
                     <div class="details">
                         <div class="personal_details">
                             <p><strong>Name:</strong> <?=$_SESSION['patientdetails']['fname'] . " " . $_SESSION['patientdetails']['lname']?></p>
                             <p><strong>Date of Birth:</strong> <?=$_SESSION['patientdetails']['dob']?></p>
+                            <p><strong>NIC:</strong> <?=$_SESSION['patientdetails']['nic']?></p>
                             <p><strong>Phone:</strong> <?=$_SESSION['patientdetails']['phone']?></p>
                         </div>
                         <div class="providerdetails">
                             <p><strong>Category:</strong> <?=$row['category']?></p>
                             <p><strong>Provider:</strong> <?=$provider?></p>
                             <p><strong>Policy Number:</strong> <?=$row['policy_number']?></p>
+                            <p><strong>Provider Contact:</strong> <?=$provider_row['contact_no']?></p>
                         </div>
+                    </div>
+                    <div class="coverage">
+                        <h3>Coverage Details</h3>
+                        <p><strong>Coverage Amount:</strong> <?=$row['coverage']?></p>
+                        <p><strong>Coverage Start Date:</strong> <?=$row['coverage_start_date']?></p>
+                        <p><strong>Coverage End Date:</strong> <?=$row['coverage_end_date']?></p>
                     </div>
                 </div>
             </div>

@@ -129,11 +129,26 @@ body{
 .detailcard{
     width: 100%;
     margin: 20px;
-    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.258);
 }
 
 .detailcard .details{
     display: flex;
+}
+.personal_details, .providerdetails{
+    width: 50%;
+    padding: 20px;
+}   
+.detailcard .title{
+    padding:20px;
+    background-image: linear-gradient(to right,rgb(43,255,213),blue);
+    border-radius: 10px 10px 0 0;
+}
+.detailcard .coverage{
+    padding: 20px;
+}
+.detailcard .coverage h3{
+    margin-bottom: 10px;
+    font-size: 20px;
 }
