@@ -1,0 +1,214 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.wrapper{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+    overflow-y: hidden;
+}
+
+.side_bar{
+    background-color: rgb(255, 255, 247);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 15% ;
+    height: 100vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.258);
+    min-width: 280px;
+    z-index: 1000;
+}
+/*#navbar_row1,.navigation,.account{
+    height: 33%;
+}*/
+.sidebar_main{
+    height: 100%;
+}
+#navbar_row1{
+    background-color: rgb(255, 255, 247);
+    height: 15%;
+    min-height: 100px;
+    padding: 20px;
+    border-bottom: 2px solid transparent;
+    border-image: linear-gradient(to right, rgb(43, 255, 213), blue) 1;
+}
+#navbar_row1 img{
+    width: 100px;
+    height: auto;
+}
+.navigation{
+    margin-top: 10px;
+    background-color: rgb(255,255,247) ;
+    display: flex;
+    height: 45%;
+    width: 100%;
+    flex-direction: column;
+    gap: 0em;
+    justify-content: space-around;
+}
+
+.navigation a{
+    text-decoration: none;
+    font-size: 17px;
+    color: rgb(0, 0, 0);
+    padding: 15px;
+    transition: transform  0.3 ease-in-out;
+}
+.navigation a:hover{
+    color: rgb(102, 101, 101);
+    margin-right: 25px;
+    width: 95%;
+    border-radius: 0 10px 10px 0;
+    background-image: linear-gradient(to right,rgba(43, 255, 213, 0.396),rgba(0, 0, 255, 0.407));
+    transform: scale(1.05);
+}
+.navigation a.selected{
+    color: rgb(102, 101, 101);
+    margin-right: 25px;
+    width: 95%;
+    border-radius: 0 10px 10px 0;
+    background-image: linear-gradient(to right,rgb(43,255,213),blue);
+}
+
+.account{
+    margin-top: 10px;
+    background-color: rgb(255,255,247) ;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 0em;
+    justify-content: space-around;
+    height: 15%;
+    border-top: 2px solid transparent;
+    border-image: linear-gradient(to right, rgb(43, 255, 213), blue) 1;
+}
+.account a{
+    text-decoration: none;
+    font-size: 17px;
+    color: rgb(0, 0, 0);
+    padding: 15px;
+    transition: transform  0.3 ease-in-out;
+}
+.account a:hover{
+    color: rgb(102, 101, 101);
+    margin-right: 25px;
+    width: 95%;
+    border-radius: 0 10px 10px 0;
+    background-image: linear-gradient(to right,rgba(43, 255, 213, 0.396),rgba(0, 0, 255, 0.407));
+    transform: scale(1.05);
+}
+
+.main_content{
+    width: 85%;
+    background-color: rgb(255, 255, 247);
+}
+.welcome-text{
+    width: 100%;
+    height: 130px;
+    z-index: 1;
+    position: relative;
+}
+.welcome-text p{
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 40px;
+}
+.content{
+    width: 100%;
+    display: flex;
+}
+.grapharea{
+    position: relative;
+    border-radius: 10px;
+    margin: 10px;
+    width: 70%;
+    height: 100%;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.grapsearch{
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-image: linear-gradient(45deg, rgb(43, 255, 213), blue);
+    border-radius: 10px 10px 0 0;
+    align-items: center;
+}
+.grapsearch p{
+    color: rgb(51, 51, 51);
+    text-transform: uppercase;
+}
+.grapsearch form{
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.grapsearch .checkbox{
+    text-transform: uppercase;
+    color: rgb(26, 26, 26);
+    font-size: 15px;
+}
+.grapsearch #graphtitle, .graphsearchsubmit{
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgba(230, 243, 255, 0.412);
+}
+.grapharea .graph{
+    padding: 20px;
+}
+.grapharea .graph p{
+    padding: 20px;
+    font-size: 20px;
+    color: gray;
+    text-transform: uppercase;
+}
+.secondaryarea{
+    border-radius: 10px;
+    margin: 10px;
+    width: 30%;
+    height: 100%;
+}
+.secondaryarea .linkbutton{
+    display: flex;
+    height: 70px;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    background-image: linear-gradient(45deg, rgb(43, 255, 213), blue);
+    border-radius: 10px 10px 10px 10px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    margin-bottom: 10px;
+    transition: transform 0.6s ease;
+}
+.secondaryarea .linkbutton:hover{
+    height: 75px;
+    background-image: linear-gradient(90deg, rgba(43, 255, 213, 0.679), rgba(0, 0, 255, 0.679));
+}
+.secondaryarea .linkbutton p{
+    text-transform: uppercase   ;
+}
+.secondaryarea .linkbutton .externallinkimg{
+    height: 30px;
+    width: 30px;
+}
+.externallinkimg img{
+    height: 30px;
+    width: 30px;
+}
+.mobile_bar{
+    display: none;
+}
+

@@ -1,0 +1,4 @@
+# Ignore configuration/credential files
+dbcon.php
+
+# Ignore OS files

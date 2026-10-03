@@ -1,0 +1,314 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.wrapper{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+    overflow-y: hidden;
+}
+
+.side_bar{
+    background-color: rgb(255, 255, 247);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 15% ;
+    height: 100vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.258);
+    min-width: 280px;
+    z-index: 1000;
+}
+/*#navbar_row1,.navigation,.account{
+    height: 33%;
+}*/
+.sidebar_main{
+    height: 100%;
+}
+#navbar_row1{
+    background-color: rgb(255, 255, 247);
+    height: 15%;
+    min-height: 100px;
+    padding: 20px;
+    border-bottom: 2px solid transparent;
+    border-image: linear-gradient(to right, rgb(43, 255, 213), blue) 1;
+}
+#navbar_row1 img{
+    width: 100px;
+    height: auto;
+}
+.navigation{
+    margin-top: 10px;
+    background-color: rgb(255,255,247) ;
+    display: flex;
+    height: 45%;
+    width: 100%;
+    flex-direction: column;
+    gap: 0em;
+    justify-content: space-around;
+}
+
+.navigation a{
+    text-decoration: none;
+    font-size: 17px;
+    color: rgb(0, 0, 0);
+    padding: 15px;
+    transition: transform  0.3 ease-in-out;
+}
+.navigation a:hover{
+    color: rgb(102, 101, 101);
+    margin-right: 25px;
+    width: 95%;
+    border-radius: 0 10px 10px 0;
+    background-image: linear-gradient(to right,rgba(43, 255, 213, 0.396),rgba(0, 0, 255, 0.407));
+    transform: scale(1.05);
+}
+.navigation a.selected{
+    color: rgb(102, 101, 101);
+    margin-right: 25px;
+    width: 95%;
+    border-radius: 0 10px 10px 0;
+    background-image: linear-gradient(to right,rgb(43,255,213),blue);
+}
+
+.account{
+    margin-top: 10px;
+    background-color: rgb(255,255,247) ;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 0em;
+    justify-content: space-around;
+    height: 15%;
+    border-top: 2px solid transparent;
+    border-image: linear-gradient(to right, rgb(43, 255, 213), blue) 1;
+}
+.account a{
+    text-decoration: none;
+    font-size: 17px;
+    color: rgb(0, 0, 0);
+    padding: 15px;
+    transition: transform  0.3 ease-in-out;
+}
+.account a:hover{
+    color: rgb(102, 101, 101);
+    margin-right: 25px;
+    width: 95%;
+    border-radius: 0 10px 10px 0;
+    background-image: linear-gradient(to right,rgba(43, 255, 213, 0.396),rgba(0, 0, 255, 0.407));
+    transform: scale(1.05);
+}
+
+.main_content{
+    display: flex;
+    width: 85%;
+}
+
+.dashboard{
+    overflow-y: scroll;
+    width: 70%;
+    background-color: rgb(255,255,247);
+}
+.welcome-text{
+    width: 100%;
+    height: 130px;
+    z-index: 1;
+    position: relative;
+}
+.welcome-text p{
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 40px;
+}
+.button_area{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.search-box{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 10px 0 0;
+}
+.search-box input{
+    width: 100%;
+    margin-right: 10px;
+    background-image: linear-gradient(135deg,rgba(0, 0, 255, 0.1),rgba(13, 195, 255, 0.1));
+    padding: 7px;
+    border-radius: .4em;
+    border: 1px solid;
+}
+.search-box button{
+    background-image: linear-gradient(135deg,rgba(0, 0, 255, 0.1),rgba(13, 195, 255, 0.1));
+    padding: 7px;
+    border-radius: .4em;
+    border: 1px solid;
+}
+.search-box button:hover{
+    background-image: linear-gradient(to right,rgb(51, 122, 244),rgba(43, 131, 255, 0.796));
+    cursor: pointer;
+}
+.hero_card{
+    display: flex;
+    flex-direction: column;
+    right: 0;
+    width: 30%;
+    min-width: 250px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color:  rgb(255, 255, 247);
+    border-left: 1px solid;
+    border-image: linear-gradient(to bottom, rgb(43, 255, 213), blue) 1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.258);
+    z-index: 1000;
+}
+.profilepic{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px;
+
+}
+.profilepic img{
+    width: 200px;
+    height: auto;
+    border-radius: 100%;
+    border: 3px solid;
+    border-color: blue;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.389);
+}
+.profilepic p{
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-top: 15px;
+}
+#row1,#row2,#row3{
+    display: flex;
+    padding: 0 10px 0 10px;
+}
+.singledetail{
+    margin: 20px;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    gap: .8em;
+}
+.singledetail img{
+    width: 50px;
+    height: auto;
+    padding: .8em;
+    background-image: linear-gradient(to right,rgba(43, 131, 255, 0.622),rgb(51, 122, 244));
+    border-radius: 100%;
+    border: 1px solid;
+    border-color: black;
+    
+}
+.detailtext .dt{
+    font-size: 13px;
+}
+.detailtext .dd{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.allinfo{
+    padding: 20px;
+    height: 100px;
+}
+.allinfo p{
+    color: aliceblue;
+    background-image: linear-gradient(to right, rgb(27, 124, 250),blue);
+    border: 1px solid;
+    border-color: black;
+    border-radius: 10px;
+    padding: 20px;
+    justify-self: center;
+    align-self: center;
+}
+
+.mobile_bar{
+    display: none;
+}
+
+/*prescription styling*/
+.presctipton-section{
+    padding: 0 40px 0 40px;
+}
+
+.prescriptionarea-heading{
+    display: flex;
+    justify-content: space-between ;
+    align-items: center;
+    height: 160px;
+}
+#reload{
+    background-image: linear-gradient(135deg,rgba(0, 0, 255, 0.1),rgba(13, 195, 255, 0.1));
+    padding: 7px;
+    border-radius: .4em;
+    margin-right: 30px;
+    font-size: 14px;
+    border: 1px solid;
+}
+#reload:hover{
+    background-image: linear-gradient(to right,rgb(51, 122, 244),rgba(43, 131, 255, 0.796));
+    cursor: pointer;
+}
+#prescription-container{
+    width: 100%;
+}
+
+.pescription-card{
+    display: flex;
+    background-color: white;
+    padding: 0  ;
+    margin: 10px 0 10px 0;
+    border-radius: .9em;
+    border: 1px solid;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.content .heading{
+    padding: 20px;
+    border-radius: .8em;
+    width: 100%;
+    height: 60px;
+    background-image: linear-gradient(135deg,rgba(0, 26, 255, 0.225),rgba(0, 170, 255, 0.225));
+}
+.content .heading .med_name{
+    font-size: 20px;
+    font-weight: bold;
+}
+.content .heading .date{
+    font-size: 13px;
+}
+.content .details{
+    padding: 20px;
+}
+
+.pescription-card .details,.pescription-card .heading{
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+}
+
+.content .details .dosage,.content .details .quantity,.content .details .status{
+    display:flex;
+
+}
+.content .details .dosage .h,.content .details .quantity .h,.content .details .status .h{
+    font-weight: bold;
+}
