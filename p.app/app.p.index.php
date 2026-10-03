@@ -34,6 +34,11 @@
                 <div class="welcome-text">
                     <p>Welcome back,<?= $_SESSION['patientdetails']['fname']?>
                     </p>
+                    <div class="admit">
+                        <a href="./process.php" class="admit-link" name="admit">
+                            <img src="../imgs/admit.png" alt="admit">
+                        </a>
+                    </div>
                 </div>
                 <div class="statusarea">
                     <div class="status" id=st1>
