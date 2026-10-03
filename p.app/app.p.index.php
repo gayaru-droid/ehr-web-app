@@ -5,7 +5,12 @@
     }
     if(isset($_GET['admit'])){
         $otp = random_int(1000, 9999);
-        $stmt=$conn->prepare('INSERT INTO admit (p_id,date,otp) VALUES (?,NOW(),?)');
+
+        $stmt=$conn->prepare('UPDATE admit SET status="expired" where p_id=? and status="pending"');
+        $stmt->bind_param('i',$_SESSION['patientdetails']['patient_id']);
+        $stmt->execute();
+
+        $stmt=$conn->prepare('INSERT INTO admit (p_id,date,otp) VALUES (?,NOW(),?);');
         $stmt->bind_param('ii',$_SESSION['patientdetails']['patient_id'], $otp);
         $stmt->execute();
     }

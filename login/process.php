@@ -16,11 +16,12 @@
         $role=$row['role'];
         $_SESSION['username']=$username;
         if($role=='patient'){
-            include('./datapass.php');
+            include('./p.datapass.php');
             header("location:../p.app/app.p.index.php");
             }
         else{
-            header('location:../d.app/app.d.index.php');
+            header('location:../doctorsend/addmission.php');
+            include('./d.datapass.php');
         }
         $conn->close();
         exit();
