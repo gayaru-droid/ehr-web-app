@@ -12,6 +12,15 @@
     $res=$stmt->get_result();
     $row=$res->fetch_assoc();
 
+    $provider_stmt=$conn->prepare('SELECT name FROM insurancecompanies WHERE id=?');
+    $provider_stmt->bind_param('i',$row['ip_id']);
+    $provider_stmt->execute();
+
+    $provider_res=$provider_stmt->get_result();
+    $provider_row=$provider_res->fetch_assoc();
+    $provider=$provider_row['name'];
+
+    
 ?>
 <html lang="en">
 <head>
@@ -45,7 +54,21 @@
                 <p>Insurance</p>
             </div>
             <div class="content">
-                <P><?=$row['catagory']?></P>
+                <div class="detailcard">
+                    <h2>Insurance Details</h2>
+                    <div class="details">
+                        <div class="personal_details">
+                            <p><strong>Name:</strong> <?=$_SESSION['patientdetails']['fname'] . " " . $_SESSION['patientdetails']['lname']?></p>
+                            <p><strong>Date of Birth:</strong> <?=$_SESSION['patientdetails']['dob']?></p>
+                            <p><strong>Phone:</strong> <?=$_SESSION['patientdetails']['phone']?></p>
+                        </div>
+                        <div class="providerdetails">
+                            <p><strong>Category:</strong> <?=$row['category']?></p>
+                            <p><strong>Provider:</strong> <?=$provider?></p>
+                            <p><strong>Policy Number:</strong> <?=$row['policy_number']?></p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
