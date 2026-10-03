@@ -42,6 +42,10 @@ else{
     $fname=$row['fname'];
     $lname=$row['lname'];
     $dob=new DateTime($row['dob']);
+    $email=$row['username'];
+    $nic=$row['nic'];
+    $phone=$row['contact_no'];
+
 
     $curruntdate=new DateTime('today');
     $age=$dob->diff($curruntdate)->y;
@@ -90,6 +94,9 @@ else{
     exit();*/
 
     $unsafepatientdetails = [
+        'email'=>$email,
+        'nic'=>$nic,
+        'phone'=>$phone,
         'id'=>$id,
         'patient_id'=>$patient_id,
         'fname' => $fname,
