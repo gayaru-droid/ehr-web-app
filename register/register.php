@@ -44,6 +44,10 @@
                     <input type="text" name="nic" id="nic">
                 </div>
                 <div class="filed">
+                    <label for="contact_no ">Contact Number: </label><br>
+                    <input type="text" name="contact_no" id="contact_no">
+                </div>
+                <div class="filed">
                     <label for="dob">Date of Birth: </label><br>
                     <input type="date" name="dob" id="dob">
                 </div>
