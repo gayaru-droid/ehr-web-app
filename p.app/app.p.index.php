@@ -4,6 +4,18 @@
         header('location:../login/login.php');  
     }
     if(isset($_GET['admit'])){
+        $stmt=$conn->prepare('SELECT role FROM users WHERE id=?');
+        $stmt->bind_param('i', $_SESSION['patientdetails']['id']);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $user = $result->fetch_assoc();
+
+        
+        if(!$user || $user['role'] !== 'patient') {
+            header('location:../login/login.php');
+            exit();
+        }
+
         $otp = random_int(1000, 9999);
 
         $stmt=$conn->prepare('UPDATE admit SET status="expired" where p_id=? and status="pending"');
