@@ -253,9 +253,9 @@ $labelsJson=json_encode($labels);
                 </div>
                 <div class="secondaryactions">
                     <div class="vieweditbasics">
-                        <p>View or Edit Basics</p>
+                        <p>Edit Basics</p>
                         <div class="moreactionsbuttons">
-                            <a href="../d.app/app.d.editbasics.php">View</a>
+                            <a href="../d.app/editbasics/editbasics.php">Edit</a>
                         </div>
                     </div>
                     <div class="addmesurment">
