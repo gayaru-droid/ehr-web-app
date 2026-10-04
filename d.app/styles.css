@@ -14,6 +14,45 @@ body{
     align-items: center;
     padding:0px 0px 20px 0px;
 }
+.sessionbutton input[type="submit"]{
+    padding: 15px 20px;
+    background-color: #ff1616;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.basicdetails h2{
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.basicdetailsarea{
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0px 0px 10px 0px #0000001a;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 100%;
+}
+.least_measurments,.contact_details,.personal_details{
+    width: 34%;
+}
+.least_measurments .details,.contact_details .details,.personal_details .details{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.basicdetailsarea .titles{
+    border-radius: 10px 10px 0 0 ;
+    width: 100%;
+    background-color: #f1f1f1;
+}
+.basicdetailsarea h3{
+    padding: 20px;
+    margin-bottom: 20px;
+}
 .content{
     margin-top: 20px;
     display: flex;
@@ -118,4 +157,25 @@ body{
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+.secondaryactions{
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.vieweditbasics, .addmesurment,.addprescription{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 30%;
+    padding: 10px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px #0000001a;
+}  
+.vieweditbasics a, .addmesurment a,.addprescription a{
+    text-decoration: none;
+    color: #000;
 }

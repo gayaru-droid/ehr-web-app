@@ -92,6 +92,62 @@ $labelsJson=json_encode($labels);
             </form>
         </div>
     </div>
+    <div class="basicdetails">
+        <h2>Basic Details</h2>
+        <div class="basicdetailsarea">
+            <?php
+                $stmt=$conn->prepare("SELECT * FROM patients WHERE id=?");
+                $stmt->bind_param('i', $_SESSION['p_id']);
+                $stmt->execute();
+                $patient_details = $stmt->get_result()->fetch_assoc();
+
+                
+                $stmt=$conn->prepare("SELECT * FROM measurements WHERE patient_id=? ORDER BY date_time DESC LIMIT 1");
+                $stmt->bind_param('i',$_SESSION['p_id']);
+                $stmt->execute();
+                $measurements=$stmt->get_result();
+                $latest_measurement=$measurements->fetch_assoc();
+
+                if(!$patient_details || !$latest_measurement){
+                    echo 'Patient or measurement not found';
+                    exit();
+                }
+
+            ?>
+            <div class="personal_details">
+                <div class="titles"><h3>Personal Details</h3></div>
+                <div class="details">
+                    <p><strong>Name : </strong><?=$_SESSION['p_name']?></p>
+                    <p><strong>Date of Birth : </strong><?=$patient_user['dob']?></p>
+                    <p><strong>Blood Group : </strong><?=$patient_details['bgroup']?></p>
+                    <p><strong>Gender : </strong><?=$patient_details['gender']?></p>
+                    <p><strong>NIC no : </strong><?=$patient_user['nic']?></p>
+                </div>
+            </div>
+            
+            <div class="contact_details">
+                <div class="titles"><h3>Contact Details</h3></div>
+                <div class="details">
+                    <p><strong>Email : </strong><?=$patient_user['username']?></p>
+                    <p><strong>Contact No : </strong><?=$patient_user['contact_no']?></p>
+                    <p><strong>Address : </strong><?=$patient_user['username']?></p>
+                </div>  
+            </div>  
+            
+            <div class="least_measurments">
+                <div class="titles"><h3>Least Measurements</h3></div>
+                <div class="details">
+                    <p><strong>Height : </strong><?=$latest_measurement['height']?> cm</p>
+                    <p><strong>Weight : </strong><?=$latest_measurement['weight']?> kg</p>
+                    <p><strong>BMI : </strong><?=$latest_measurement['bmi']?></p>
+                    <p><strong>Blood Presure : </strong><?=$latest_measurement['systolic']?>/<?=$latest_measurement['diastolic']?> mmHg</p>
+                    <p><strong>Heart Rate : </strong><?=$latest_measurement['heartrate']?> bpm</p>
+                    <p><strong>Blood Glucose : </strong><?=$latest_measurement['glucose']?> mg/dl</p>
+                    <p><strong>Blood Glucose : </strong><?=$latest_measurement['oxygen']?> %</p>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="content">
         <div class="grapharea">
             <div class="grapsearch">
@@ -195,22 +251,22 @@ $labelsJson=json_encode($labels);
                         </form>
                     </div>
                 </div>
-                <div class="secondaryactions"></div>
-                    <div class="editbasics">
-                        <p>Edit Basics</p>
-                        <div class="editbasicsbuttons">
-                            <a href="../d.app/app.d.editbasics.php">Edit</a>
+                <div class="secondaryactions">
+                    <div class="vieweditbasics">
+                        <p>View or Edit Basics</p>
+                        <div class="moreactionsbuttons">
+                            <a href="../d.app/app.d.editbasics.php">View</a>
                         </div>
                     </div>
                     <div class="addmesurment">
                         <p>Add Measurement</p>
-                        <div class="editbasicsbuttons">
+                        <div class="moreactionsbuttons">
                             <a href="../d.app/app.d.addmeasurement.php">Add</a>
                         </div>
                     </div>
                     <div class="addprescription">
                         <p>Add Prescription</p>
-                        <div class="editbasicsbuttons">
+                        <div class="moreactionsbuttons">
                             <a href="../d.app/app.d.addprescription.php">Add</a>
                         </div>
                     </div>
