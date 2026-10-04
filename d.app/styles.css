@@ -107,3 +107,15 @@ body{
     text-decoration: none;
     color: #000;
 }
+#medical_report{
+    display: none;
+}
+.addmedicalreportbuttons input[type="submit"]{
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

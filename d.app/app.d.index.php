@@ -185,11 +185,13 @@ $labelsJson=json_encode($labels);
                 <div class="addmedicalreport">
                     <p>Add Medical Report</p>
                     <div class="addmedicalreportbuttons">
-                        <img src='../imgs/upload.png'>
+                        <label for="medical_report">
+                            <img src='../imgs/upload.png' id='upload_icon' alt='Upload Icon' width='20' height='20'>
+                        </label>
                         <a href="../d.app/app.d.addmedicalreport.php">uploadfile</a>
                         <form action="#" method="post" enctype="multipart/form-data">
                             <input type="file" name="medical_report" id="medical_report">
-                            <input type="submit" value="Upload">
+                            <input type="submit" value="Upload">      
                         </form>
                     </div>
                 </div>
@@ -243,6 +245,17 @@ $labelsJson=json_encode($labels);
                 }
             }
         });
+        </script>
+        <script>
+            document.getElementById('medical_report').addEventListener('change', function () {
+            if (this.files && this.files.length > 0) {
+            // Change image source to tick icon when a file is selected
+            document.getElementById('upload_icon').src = '../imgs/tick.png';
+            } else {
+            // Revert back to upload icon if selection is cleared
+            document.getElementById('upload_icon').src = '../imgs/upload.png';
+            }
+}           );
         </script>
 </body>
 </html>
