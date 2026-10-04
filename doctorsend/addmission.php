@@ -6,10 +6,10 @@ if(!isset($_SESSION['username'])) {
 }
 if(isset($_POST['admit'])) {
     include('../dbcon.php');
-    $otp = $_POST['otp'];
+    $_SESSION['otp'] = $_POST['otp'];
     
-    $stmt = $conn->prepare("SELECT p_id FROM admit WHERE otp=?");
-    $stmt->bind_param("i", $otp);
+    $stmt = $conn->prepare("SELECT p_id FROM admit WHERE otp=? and status='pending'");
+    $stmt->bind_param("i", $_SESSION['otp']);
     $stmt->execute();
     $res = $stmt->get_result();
     $row = $res->fetch_assoc();
@@ -22,14 +22,17 @@ if(isset($_POST['admit'])) {
         $d_id = $row['id'];
         
         $stmt=$conn->prepare("UPDATE admit SET d_id=? WHERE otp=?");
-        $stmt->bind_param("ii", $d_id, $otp);
+        $stmt->bind_param("ii", $d_id, $_SESSION['otp']);
         $stmt->execute();
 
         $stmt=$conn->prepare("UPDATE admit SET status='active' WHERE otp=?");
-        $stmt->bind_param("i", $otp);
+        $stmt->bind_param("i", $_SESSION['otp']);
         $stmt->execute();
-        echo "<script>alert('" . $d_id . "');</script>";
-        }}
+        header('location:../d.app/app.d.index.php');
+        }
+    else {
+        echo "<script>alert('Invalid OTP');</script>";
+    }}
 ?>
 <!DOCTYPE html>
 <html lang="en">
