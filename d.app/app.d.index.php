@@ -126,6 +126,7 @@ $labelsJson=json_encode($labels);
                 <div class="text">
                     <p>Ongoing Prescriptions</p>
                     <P>See All</P>
+                </div>
                     <?php
                         $sql1="SELECT 
                                     p.medicine_name,
@@ -162,31 +163,55 @@ $labelsJson=json_encode($labels);
                         /*echo(json_encode($ongoingprescriptions));*/
                         $stmt->close();
                     ?>
+                <div class="prescriptionarea">
+                    <?php
+                        if(count($ongoingprescriptions)===0){
+                            echo("<p>No ongoing prescriptions</p>");
+                        }else{
+                            foreach($ongoingprescriptions as $prescription){
+                                echo("<div class='prescriptioncard'>");
+                                echo("<p><strong>Medicine Name:</strong> ".$prescription['medicine_name']."</p>");
+                                echo("<p><strong>Dosage:</strong> ".$prescription['dosage']."</p>");
+                                echo("<p><strong>Quantity:</strong> ".$prescription['quantity']."</p>");
+                                echo("<p><strong>Date Time:</strong> ".$prescription['date_time']."</p>");
+                                echo("<p><strong>Doctor Name:</strong> ".$prescription['doctor_name']."</p>");
+                                echo("</div>");
+                            }
+                        }
+                    ?>
                 </div>
             </div>
-            <div class="editbasics">
-                <p>Edit Basics</p>
-                <div class="editbasicsbuttons">
-                    <a href="../d.app/app.d.editbasics.php">Edit</a>
+            <div class="moreactions">
+                <div class="addmedicalreport">
+                    <p>Add Medical Report</p>
+                    <div class="addmedicalreportbuttons">
+                        <img src='../imgs/upload.png'>
+                        <a href="../d.app/app.d.addmedicalreport.php">uploadfile</a>
+                        <form action="#" method="post" enctype="multipart/form-data">
+                            <input type="file" name="medical_report" id="medical_report">
+                            <input type="submit" value="Upload">
+                        </form>
+                    </div>
                 </div>
-            </div>
-            <div class="addmesurment">
-                <p>Add Measurement</p>
-                <div class="editbasicsbuttons">
-                    <a href="../d.app/app.d.addmeasurement.php">Add</a>
-                </div>
-            </div>
-            <div class="addprescription">
-                <p>Add Prescription</p>
-                <div class="editbasicsbuttons">
-                    <a href="../d.app/app.d.addprescription.php">Add</a>
-                </div>
-            </div>
-            <div class="addmedicalreport">
-                <p>Add Medical Report</p>
-                <div class="editbasicsbuttons">
-                    <img src='../imgs/externallink.png'>
-                    <a href="../d.app/app.d.addmedicalreport.php">uploadfile</a>
+                <div class="secondaryactions"></div>
+                    <div class="editbasics">
+                        <p>Edit Basics</p>
+                        <div class="editbasicsbuttons">
+                            <a href="../d.app/app.d.editbasics.php">Edit</a>
+                        </div>
+                    </div>
+                    <div class="addmesurment">
+                        <p>Add Measurement</p>
+                        <div class="editbasicsbuttons">
+                            <a href="../d.app/app.d.addmeasurement.php">Add</a>
+                        </div>
+                    </div>
+                    <div class="addprescription">
+                        <p>Add Prescription</p>
+                        <div class="editbasicsbuttons">
+                            <a href="../d.app/app.d.addprescription.php">Add</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
