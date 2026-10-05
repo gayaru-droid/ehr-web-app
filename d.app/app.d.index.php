@@ -261,7 +261,7 @@ $labelsJson=json_encode($labels);
                     <div class="addmesurment">
                         <p>Add Measurement</p>
                         <div class="moreactionsbuttons">
-                            <a href="../d.app/app.d.addmeasurement.php">Add</a>
+                            <a href="../d.app/addmeasurement/addmeasurement.php">Add</a>
                         </div>
                     </div>
                     <div class="addprescription">
