@@ -16,8 +16,8 @@ if(!isset($_SESSION['p_id'])){
     <div class="container">
         <div class="card">
             <div class="title">
-                <p class=heading>Add Measurement</p>
-                <p>Add measurements to update</p>
+                <p class=heading>Add Prescription</p>
+                <p>Add Prescription</p>
             </div>
             <div class="form">
                 <form action="process.php" method="post">

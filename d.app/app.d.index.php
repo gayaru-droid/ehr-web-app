@@ -19,6 +19,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 $doctor = $result->fetch_assoc();
 $_SESSION['d_name'] = $doctor['fname'];
+$_SESSION['d_id']=$doctor['id'];
 
 $stmt = $conn->prepare("SELECT * FROM admit WHERE otp=? AND status='active'");
 $stmt->bind_param("i", $_SESSION['otp']);
@@ -186,7 +187,8 @@ $labelsJson=json_encode($labels);
                     <?php
                         $sql1="SELECT 
                                     p.medicine_name,
-                                    p.date_time,
+                                    p.start_date,
+                                    p.end_date,
                                     p.dosage,
                                     p.quantity,
                                     CASE
@@ -197,7 +199,8 @@ $labelsJson=json_encode($labels);
                                     CONCAT(d.fname, ' ', d.lname) AS doctor_name
                                 FROM prescriptions p
                                 JOIN doctors d ON p.doctor_id = d.id
-                                WHERE p.patient_id = ?";
+                                WHERE p.patient_id = ?
+                                ORDER BY start_date ASC";
 
                         $stmt=$conn->prepare($sql1);
                         $stmt->bind_param('i',$_SESSION['p_id']);
@@ -229,7 +232,8 @@ $labelsJson=json_encode($labels);
                                 echo("<p><strong>Medicine Name:</strong> ".$prescription['medicine_name']."</p>");
                                 echo("<p><strong>Dosage:</strong> ".$prescription['dosage']."</p>");
                                 echo("<p><strong>Quantity:</strong> ".$prescription['quantity']."</p>");
-                                echo("<p><strong>Date Time:</strong> ".$prescription['date_time']."</p>");
+                                echo("<p><strong>Start Date:</strong> ".$prescription['start_date']."</p>");
+                                echo("<p><strong>End Date:</strong> ".$prescription['end_date']."</p>");
                                 echo("<p><strong>Doctor Name:</strong> ".$prescription['doctor_name']."</p>");
                                 echo("</div>");
                             }
@@ -267,7 +271,7 @@ $labelsJson=json_encode($labels);
                     <div class="addprescription">
                         <p>Add Prescription</p>
                         <div class="moreactionsbuttons">
-                            <a href="../d.app/app.d.addprescription.php">Add</a>
+                            <a href="../d.app/addprescription/addprescription.php">Add</a>
                         </div>
                     </div>
                 </div>
